@@ -1,0 +1,142 @@
+
+<!doctype html>
+
+<html>
+
+<head>
+	<title>Carpe Beerem</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" href="css/slimbox.css" type="text/css" media="screen" />
+	
+	<script type="text/javascript" src="js/jquery.js"></script>        
+	<script type="text/javascript" src="js/slimbox2.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".scroll").click(function(event) {
+				event.preventDefault();				
+				var clicked = $(this).attr("href");
+				var destination = $(clicked).offset().top - 150;
+				$("html:not(:animated),body:not(:animated)").animate({scrollTop: destination}, 500);
+			});				
+			
+			$("#content").css("display", "none");			
+			$("#content").fadeIn(1000);
+		});
+	</script>
+</head>
+
+<body>
+
+	<div id="headercontainer"><div id="header">
+		<h1>Carpe Beerem <span class="subheading">Seize the Beer</span></h1>
+		<div id="nav">
+			<ul>
+				<li><a class="scroll" href="#intro">Intro</a></li>
+				<li><a class="scroll" href="#about">About</a></li>
+				<li><a class="scroll" href="#data">Data</a></li>				
+				<li><a class="scroll" href="#visualization">Visualization</a></li>			
+			</ul>
+		</div>		
+	</div></div>
+
+	<div id="container">
+
+		<div id="content">
+			<div id="spacer"></div>
+			
+			<div id="intro">
+				<div class="contentbox">
+				
+				<div style="text-align: center">
+					<h3>A <strong>Beer</strong> Recommender</h3>
+					<h4>By Karen Xiao, Kevin Wu, and Sandesh Kataria</h4>
+				</div>
+				<div style="text-align: center">
+					<iframe width="560" height="315" src="http://www.youtube.com/embed/Y0kZOe_FzC0?rel=0" frameborder="0" allowfullscreen></iframe>
+					<p class="introduction">
+						Carpe Beerem is a beer recommendation tool for beer enthusiasts and people looking to discover new beers. 
+					</p> 
+				</div>
+				</div>
+			</div>
+			
+			<div id="about">
+				<div class="contentbox">
+				<h2>About</h2>
+				<br/>
+				<p>
+					In our project, we aim to create a recommendation system for beers based on item-item collaborative filtering, similar to the method used on Yelp review data in Problem Set 4. 
+					<br/><br/>
+					In addition to generating recommendations for users based on his/her stated preferences for beer, we also explored a number of ways to visualize the data we scraped from <a href="http://beeradvocate.com">beeradvocate.com</a>
+				</p>
+				<h3>Data Collection</h3>
+				<p>
+					Data collection and cleaning was a substantial component of this project. Because there is currently no BeerAdvocate API, and because the html used to write the website was, at times, archaic, it took a substantial investment of time and energy to scrape data on beers, beer ratings, and other relevant information.
+					<br/><br/>
+					Again, since there was no API, regular html scraping was used to collect the information from beer profiles such as <a href="http://beeradvocate.com/beer/profile/132/354/?show_ratings=Y">this one</a>. The urls for beers were scraped by first scraping the different style categories for beers, than scraping the url links to each individual beer underneath each category.
+					<br/><br/>
+					Then, the fact that there was no single web page where all the ratings for a particular beer could be found meant traversing through all of the separate pages (i.e. <a href="http://beeradvocate.com/beer/profile/132/354/?show_ratings=Y&count=50">http://beeradvocate.com/beer/profile/132/354/?show_ratings=Y&count=50</a>) in order to collect all the data. 
+				</p>
+				<h3>The Recommender</h3>
+				<p>
+					The recommender is made using a K-Nearest Neighbors Collaborative Filtering method. Collaborative filtering methods make use of past information on users' behaviors, activities or preferences to predict what users will like based on their similarity to other users. Because our data contains a large amount of data on users (specifically what ratings users gave to various types of beer), we thought this was a good approach for building our recommendation system.
+					<br/><br/>
+					For the K-Nearest Neighbors approach, we implemented and compared two different similarity measures: Pearson Co-efficient and Cosine Similarity. These similarity values gave us the similarity between two beers based on how similarly users rated the beers. For each of the methods, we also subtracted out the user's average rating to account for biases in the way users rate beers.
+					<br/><br/>
+					We analyzed our results
+				</p>
+				<h3>Network Analysis</h3>
+				<p>
+					<a rel="lightbox-screencaps" href="images/network_country.png" title="Review Count"><img src="images/network_country.png" /></a>
+					In Part III of our analysis, our group uses networks to visualize the relationships between beers, using user review data on various pairs of beers to define the edge weights between nodes.  
+					<br/><br/>
+					One of the ways we decided to weight edges was through a pearson similarity coefficient, which would require us to know the average rating a user gives beers in this particular dataset. 
+					<br/><br/>
+					The motivation behind using a pearson similarity coefficient to weight the edges was that this would provide a way to visualize the correlation between all beers at once, in a statistically sound way. 
+					<br/><br/>
+					This visualization, done using the pearson similarity coefficient network, we color nodes by location of origin, and observe a fair amount of clustering along that axis. One simple explanation for this is that beers from the same city or region are often from the same brewery, and people are more likely to enjoy a beer if they have had a different beer by the same brand. Budweiser and Bud Light are an example of this. Beer style still seems to be a major factor though - notice the collection of PA and IPAs at the bottom of the graph. 
+					<br/><br/>
+					**One added feature of this network visualization is that node label sizes are proportionate to average user rating, and by looking at this graph you can notice some of the winners/losers. 
+				</p>
+				<h3>Regression Analysis</h3>
+				<p>
+					In addition to recommending beers and visualizing networks of beers, we used the data we scraped to gain a better understanding of the user ratings on Beer Advocate. Each user has to rate the beer's look, smell, feel, and taste which is averaged to calculate an overall user rating. We created scatterplot matrix and did a linear regression to figure out which one of those attributes is the best predictor of the overall user rating.
+				</p>
+				</div>
+			</div>
+			
+			<div id="data">
+				<div class="contentbox">			
+				<h2>Data</h2>				
+				Our data was scraped from <a href="http://www.beeradvocate.com">beeradvocate.com</a>. Download the data:
+				<ul>
+					<li>
+						<a href="data/small_data.csv">small_data.csv</a>
+						<em>(46 MB)</em>
+					</li>				
+					<li>
+						<a href="data/large_data.csv">large_data.csv</a>
+						<em>(86 MB)</em>
+					</li>	
+				</ul>
+			
+				</div>
+			</div>			
+			
+			<div id="visualization">
+				<div class="contentbox">	
+				<h2>Visualizations</h2>	
+				Click to show larger images!
+				<p>
+				<a rel="lightbox-screencaps" href="images/review_count.png" title="Review Count"><img src="images/review_count.png" /></a>
+				</p>
+				</div>
+			</div>		
+			
+		</div>	
+		
+	</div>
+
+</body>
+</html>

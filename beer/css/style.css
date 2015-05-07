@@ -1,0 +1,263 @@
+/* FONTS */
+
+@import url('http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800');
+@import url('http://fonts.googleapis.com/css?family=Pathway+Gothic+One:200,300,400,500,600,700,800');
+
+
+/* BASIC STYLE */
+
+body {
+	background: url("../images/bg.jpg");
+	background-attachment: fixed;
+	margin: 0;
+	padding: 0;
+}
+
+body, p {
+	font-size: 18px;	
+	font-family: 'Raleway';
+	font-weight: 300;
+	color: #999;
+}
+
+a:hover {
+	cursor: crosshair;
+}
+
+::selection {
+	color: #FFF;
+}
+
+/* HEADER */
+
+#headercontainer {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background: url("../images/bg.jpg");
+	z-index: 4;
+	height: 130px;
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	position: fixed;
+	width: 100%;
+	background: rgba(255, 255, 255, 0.2);
+	height: 130px;
+	overflow: hidden;
+	transition: all 0.5s;
+	-moz-transition: all 0.5s; 
+	-webkit-transition: all 0.5s; 
+	-o-transition: all 0.5s; 	
+	z-index: 5;
+}
+
+#header h1 {
+	float: left;
+	margin: 0;
+	padding: 20px;
+	font-size: 72px;
+	font-weight: 100;
+	font-family: 'Pathway Gothic One';
+	color: #FFCC00;
+	text-shadow: #333 3px 3px 3px;
+	text-transform: uppercase;	
+}
+
+.subheading {
+	font-weight: 700;
+	font-family: Raleway;
+	font-size: 30px;
+	color: #000033;
+
+}
+
+/* NAVIGATION */
+
+#nav {
+	float: right;
+	margin-top: 30px;
+	padding-right: 20px;
+	text-align: right;
+	font-size: 14px;
+	font-weight: 800;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+#nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+#nav ul li {
+	display: inline-block;
+}
+
+#nav a {
+	display: inline-block;
+	padding: 14px 20px;
+	color: #222;
+	text-decoration: none;
+	background-image: none;
+}
+
+#nav a:hover {
+	background-image: url("../images/bg.jpg");
+	color: #777;	
+}
+
+/* CONTENT */
+
+#container {
+	margin: auto;
+	max-width: 800px;
+}
+
+#spacer {
+	height: 150px;
+}
+
+#content {
+	z-index: -5;
+}
+
+#content a {
+	text-decoration: none;
+	color: #585858;	
+}
+
+#content a:hover {
+	color: #FFCC33;
+}
+
+.contentbox {
+	padding: 20px;
+	margin: 20px;
+}
+
+#content h2 {
+	border-bottom: 2px solid #666;
+	font-weight: 200;
+	font-size: 48px;
+	margin: 0 0 20px 0;
+}
+
+#content h3 {
+	font-weight: 500;
+	font-size: 20px;
+	color: #FFCC00;
+}
+
+#content img {
+	vertical-align: middle;
+}
+
+/* INTRO */
+
+#intro h3 {
+	font-size: 56px;
+	font-style: normal;
+	font-weight: 400;
+	font-family: 'Pathway Gothic One';
+	margin: 0;
+	color: #666;	
+}
+
+#content h4 {
+	margin: 0;
+	padding: 0;
+	padding-bottom: 50px;
+	font-size: 20px;
+	font-weight: 400;
+	color: #666;	
+}
+
+#content .introduction {
+	padding-top: 20px;
+	color: #666;
+	font-size: 28px;
+	text-align: center;
+}
+
+.logo {
+	opacity: 0.8;
+	transition: all 0.5s;
+	-moz-transition: all 0.5s; 
+	-webkit-transition: all 0.5s; 
+	-o-transition: all 0.5s; 			
+}
+
+.logo:hover {
+	opacity: 1;
+	transition: all 0.5s;
+	-moz-transition: all 0.5s; 
+	-webkit-transition: all 0.5s; 
+	-o-transition: all 0.5s; 		
+}
+
+/* ABOUT */
+
+#about b {
+	font-weight: 600;
+}
+
+#about img {
+	width: 250px;
+	padding: 3px;
+	float: left;
+	margin: 0 15px 15px 0;
+	background-color: #000033;
+}
+
+#about img:hover {
+	background-color: #FFCC00;
+}
+
+#about #processbookdownload {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+/* DATA */
+
+#data ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 20px 0 0 0;
+}
+
+#data ul li {
+}
+
+#data ul li img {
+	vertical-align: middle;
+	width: 20px;
+	margin: auto 15px;
+}
+
+#data a {
+	text-decoration: none;
+	color: #FFCC33;	
+}
+
+#data a:hover {
+	color: #585858;	
+}
+
+#data em {
+	font-style: normal;
+	color: #444;
+}
+
+
+/* DOWNLOAD */
+
+#download img {
+	height: 60px;
+	opacity: 0.8;
+	vertical-align: middle;
+}
